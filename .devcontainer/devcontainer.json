@@ -1,0 +1,13 @@
+{
+  "build": {
+    "name": "skb-dev-container",
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "type=bind,source=${localEnv:EXTERNAL_READ_DIR},target=${localEnv:EXTERNAL_READ_DIR},readonly",
+    "type=bind,source=${localEnv:HOME}/.pi,target=/home/vscode/.pi"
+
+  ],
+  "postCreateCommand": ".devcontainer/scripts/setup"
+}
