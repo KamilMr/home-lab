@@ -32,6 +32,7 @@ spec:
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
             - port: 3005
+              containerPort: 3005
               targetPort: 80
           securityContext:
             allowPrivilegeEscalation: false
