@@ -44,8 +44,8 @@ spec:
           - mountPath: /podcasts
             name: audiobookshelf-podcasts
           envFrom:
-          - configMapRef:
-            name: abs-config
+            - configMapRef:
+              name: abs-config
       volumes:
         - name: audiobookshelf-config
           persistentVolumeClaim:
