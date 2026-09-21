@@ -5,7 +5,6 @@ metadata:
   name: abs-config
   namespace: audiobookshelf
 data:
-  # PORT: 3005
   TZ: Europe/Warsaw
 ---
 apiVersion: apps/v1
@@ -31,9 +30,8 @@ spec:
         - name: audiobookshelf
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
-            - port: 3005
-              containerPort: 3005
-              targetPort: 80
+            - containerPort: 80
+
           securityContext:
             allowPrivilegeEscalation: false
           volumeMounts:
@@ -43,6 +41,9 @@ spec:
           - configMapRef:
             name: abs-config
       volumes:
+        - name: audiobookshelf-data
+          persistentVolumeClaim:
+            claimName: audiobookshelf-data
         - name: audiobookshelf-metadata
           persistentVolumeClaim:
             claimName: audiobookshelf-metadata
