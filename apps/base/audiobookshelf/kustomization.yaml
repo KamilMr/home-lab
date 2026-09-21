@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: audiobookshelf
 resources:
   - namespace.yaml
-  # - deployment.yaml
+  - deployment.yaml
   # - storage.yaml
   # - service.yaml

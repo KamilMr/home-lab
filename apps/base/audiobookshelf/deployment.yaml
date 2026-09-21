@@ -1,0 +1,53 @@
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: abs-config
+  namespace: audiobookshelf
+data:
+  # PORT: 3005
+  TZ: Europe/Warsaw
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audiobookshelf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audiobookshelf
+  template:
+    metadata:
+      labels:
+        app: audiobookshelf
+    spec:
+      # securityContext:
+      #   fsGroup: 33 # www-data group ID
+      #   runAsUser: 33 # www-data user ID
+      #   runAsGroup: 33 # www-data group ID
+
+      containers:
+        - name: audiobookshelf
+          image: ghcr.io/advplyr/audiobookshelf:latest
+          ports:
+            - port: 3005
+              targetPort: 80
+          securityContext:
+            allowPrivilegeEscalation: false
+          volumeMounts:
+          - mountPath: /etc/audiobookshelf/data
+            name: audiobookshelf-data
+          envFrom:
+          - configMapRef:
+            name: abs-config
+      volumes:
+        - name: audiobookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
+        - name: audiobookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-audiobooks
+        - name: audiobookshelf-podcasts
+          persistentVolumeClaim:
+            claimName: audiobookshelf-podcasts
