@@ -21,10 +21,11 @@ spec:
       labels:
         app: audiobookshelf
     spec:
-      # securityContext:
-      #   fsGroup: 33 # www-data group ID
-      #   runAsUser: 33 # www-data user ID
-      #   runAsGroup: 33 # www-data group ID
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 2000
 
       containers:
         - name: audiobookshelf
