@@ -21,11 +21,11 @@ spec:
       labels:
         app: audiobookshelf
     spec:
-      # securityContext:
-      #   runAsNonRoot: true
-      #   runAsUser: 1000
-      #   runAsGroup: 1000
-      #   fsGroup: 2000
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 2000
 
       containers:
         - name: audiobookshelf
