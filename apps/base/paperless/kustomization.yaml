@@ -4,5 +4,5 @@ namespace: paperless
 resources:
   - namespace.yaml
   # - deployment.yaml
-  # - storage.yaml
+  - storage.yaml
   - service.yaml
