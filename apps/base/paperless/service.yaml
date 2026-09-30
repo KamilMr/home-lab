@@ -4,7 +4,7 @@ metadata:
   name: paperless
 spec:
   ports:
-    - port: 8010
+    - port: 8000
   selector:
     app: paperless
   type: ClusterIP

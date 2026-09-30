@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless
+  template:
+    metadata:
+      labels:
+        app: paperless
+    spec:
+      # securityContext:
+      #   fsGroup: 33 # www-data group ID
+      #   runAsUser: 33 # www-data user ID
+      #   runAsGroup: 33 # www-data group ID
+
+      containers:
+        - name: paperless
+          image: paperlessngx/paperless-ngx:3.2
+          ports:
+            - containerPort: 8000
+          securityContext:
+            allowPrivilegeEscalation: false
+          volumeMounts:
+          - mountPath: /usr/src/paperless/data
+            name: paperless-data
+          - mountPath: /usr/src/paperless/media
+            name: paperless-media
+          - mountPath: /usr/src/paperless/export
+            name: paperless-export
+          - mountPath: /usr/src/paperless/consume
+            name: paperless-consume
+          # envFrom:
+          # - secretRef:
+          #     name: linkding-secret
+      volumes:
+        - name: paperless-data
+          persistentVolumeClaim:
+            claimName: paperless-data
+        - name: paperless-consume
+          persistentVolumeClaim:
+            claimName: paperless-consume
+        - name: paperless-export
+          persistentVolumeClaim:
+            claimName: paperless-export
+        - name: paperless-media
+          persistentVolumeClaim:
+            claimName: paperless-media
