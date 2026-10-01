@@ -33,9 +33,9 @@ spec:
             name: paperless-export
           - mountPath: /usr/src/paperless/consume
             name: paperless-consume
-          # envFrom:
-          # - secretRef:
-          #     name: linkding-secret
+          envFrom:
+          - secretRef:
+              name: paperless-secrets
           env:
             - name: PAPERLESS_REDIS
               value: redis://valkey:6379
