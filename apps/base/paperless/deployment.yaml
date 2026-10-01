@@ -36,6 +36,9 @@ spec:
           # envFrom:
           # - secretRef:
           #     name: linkding-secret
+          env:
+            - name: PAPERLESS_REDIS
+              value: redis://valkey:6379
       volumes:
         - name: paperless-data
           persistentVolumeClaim:

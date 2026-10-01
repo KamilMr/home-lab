@@ -6,3 +6,6 @@ resources:
   - deployment.yaml
   - storage.yaml
   - service.yaml
+  - deployment-valkey.yaml
+  - service-valkey.yaml
+  - storage-valkey.yaml
