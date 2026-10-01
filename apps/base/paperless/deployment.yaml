@@ -12,6 +12,7 @@ spec:
       labels:
         app: paperless
     spec:
+      enableServiceLinks: false
       # securityContext:
       #   fsGroup: 33 # www-data group ID
       #   runAsUser: 33 # www-data user ID
