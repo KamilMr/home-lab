@@ -9,3 +9,4 @@ resources:
   - deployment-valkey.yaml
   - service-valkey.yaml
   - storage-valkey.yaml
+  - ingress.yaml
