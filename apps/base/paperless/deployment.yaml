@@ -20,7 +20,7 @@ spec:
 
       containers:
         - name: paperless
-          image: paperlessngx/paperless-ngx:3.2
+          image: paperlessngx/paperless-ngx:3.3
           ports:
             - containerPort: 8000
           securityContext:
