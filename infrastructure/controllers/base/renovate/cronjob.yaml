@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:44.167.5
+              image: renovate/renovate:44.186.7
               args:
                 - kamilmr/home-lab
 
